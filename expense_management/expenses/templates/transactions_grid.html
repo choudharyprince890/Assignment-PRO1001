@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Office Transactions</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .add-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Office Transactions</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="4" style="text-align: left;">Office Transactions</th>
+                <th colspan="1" style="text-align: right;">
+                    <a href="{% url 'add-transaction' %}" class="add-button">+ Add Transaction</a>
+                </th>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Credit</th>
+                <th>Debit</th>
+                <th>Running Balance</th>
+            </tr>
+        </thead>
+<tbody>
+    {% for transaction in transactions %}
+    <tr>
+        <td>{{ transaction.date }}</td>
+        <td>{{ transaction.description }}</td>
+        <td>{% if transaction.credit %}{{ transaction.credit }}{% else %}-{% endif %}</td>
+        <td>{% if transaction.debit %}{{ transaction.debit }}{% else %}-{% endif %}</td>
+        <td>{{ transaction.running_balance }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No transactions found.</td>
+    </tr>
+    {% endfor %}
+</tbody>
+
+    </table>
+</body>
+</html>
