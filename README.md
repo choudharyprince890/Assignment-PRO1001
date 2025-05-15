@@ -2,8 +2,7 @@
 ### ✅ Add the File
 You can add it using the command:
 
-```bash
-echo "# Django Project
+"# Django Project
 
 This is a Django-based web application.
 
@@ -42,4 +41,4 @@ This is a Django-based web application.
 
 6. Open your browser and go to:  
    http://127.0.0.1:8000
-" > README.md
+
